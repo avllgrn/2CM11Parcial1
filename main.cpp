@@ -62,25 +62,8 @@ public:
 };
 
 int main(void){
-    //Codifica un programa que reste dos puntos en un plano cartesiano
-
-    Punto A, B, C;
-
-    cout<<endl<<"Dame las coordenadas de A "<<endl;
-    A.pideleAlUsuarioTusDatos();
-
-    cout<<endl<<"Dame las coordenadas de B "<<endl;
-    B.pideleAlUsuarioTusDatos();
-
-    C.modificaTuX( A.dameTuX() - B.dameTuX() );
-    C.modificaTuY( A.dameTuY() - B.dameTuY() );
-
-    cout<<endl<<"  A";
-    A.muestraTusDatos();
-    cout<<endl<<"- B";
-    B.muestraTusDatos();
-    cout<<endl<<"= C";
-    C.muestraTusDatos();
+    //Codifica un programa que calcule la pendiente de una recta
+    //dados dos puntos
 
     return 0;
 }
