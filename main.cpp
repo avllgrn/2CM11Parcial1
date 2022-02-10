@@ -1,20 +1,24 @@
 #include <iostream>
 using namespace std;
 
+struct Punto{
+    double x;
+    double y;
+};
 int main(void){
-    int a, b, c;
+    //Codifica un programa que sume dos puntos en un plano cartesiano
 
-    cout << "Ingresa un numero ";
-    cin >> a;
+    struct Punto A, B, C;
 
-    cout << "Ingresa otro numero ";
-    cin >> b;
+    cout<<"Dame las coordenadas de A ";
+    cin>>A.x>>A.y;
+    cout<<"Dame las coordenadas de B ";
+    cin>>B.x>>B.y;
 
-    c = a+b;
+    C.x = A.x + B.x;
+    C.y = A.y + B.y;
 
-    cout << "a = " << a << endl
-         << "b = " << b << endl
-         << "c = " << c << endl;
+    cout<<"("<<C.x<<","<<C.y<<")"<<endl;
 
     return 0;
 }
