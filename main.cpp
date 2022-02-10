@@ -62,7 +62,7 @@ public:
 };
 
 int main(void){
-    //Codifica un programa que sume dos puntos en un plano cartesiano
+    //Codifica un programa que reste dos puntos en un plano cartesiano
 
     Punto A, B, C;
 
@@ -72,12 +72,12 @@ int main(void){
     cout<<endl<<"Dame las coordenadas de B "<<endl;
     B.pideleAlUsuarioTusDatos();
 
-    C.modificaTuX( A.dameTuX() + B.dameTuX() );
-    C.modificaTuY( A.dameTuY() + B.dameTuY() );
+    C.modificaTuX( A.dameTuX() - B.dameTuX() );
+    C.modificaTuY( A.dameTuY() - B.dameTuY() );
 
     cout<<endl<<"  A";
     A.muestraTusDatos();
-    cout<<endl<<"+ B";
+    cout<<endl<<"- B";
     B.muestraTusDatos();
     cout<<endl<<"= C";
     C.muestraTusDatos();
