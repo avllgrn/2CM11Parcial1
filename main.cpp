@@ -62,20 +62,27 @@ public:
 };
 
 int main(void){
-    //Codifica un programa que calcule la pendiente de una recta
-    //dados dos puntos
+    //Codifica un programa que calcule la distancia entre
+    //dos puntos en un plano cartesiano
 
-    Punto P1, P2;
-    float m;
+    Punto P, Q;
+    float d;
 
-    cout<<endl<<"Ingresa las coordenadas de P1"<<endl;
-    P1.pideleAlUsuarioTusDatos();
-    cout<<endl<<"Ingresa las coordenadas de P2"<<endl;
-    P2.pideleAlUsuarioTusDatos();
+    //1. Pide datos
+    cout<<endl<<"Ingresa las coordenadas de P"<<endl;
+    P.pideleAlUsuarioTusDatos();
+    cout<<endl<<"Ingresa las coordenadas de Q"<<endl;
+    Q.pideleAlUsuarioTusDatos();
 
-    m = (P2.dameTuY()-P1.dameTuY()) / (P2.dameTuX()-P1.dameTuX());
+    //2. Calcula formula(s)
+    d = sqrt(
+            pow(P.dameTuX()-Q.dameTuX(), 2)
+            +
+            pow(P.dameTuY()-Q.dameTuY() ,2)
+        );
 
-    cout<<endl<<"m = "<<m<<endl;
+    //3. Muestra resultado(s)
+    cout<<endl<<"d = "<<d<<endl;
 
     return 0;
 }
