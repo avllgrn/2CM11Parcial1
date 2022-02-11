@@ -65,5 +65,17 @@ int main(void){
     //Codifica un programa que calcule la pendiente de una recta
     //dados dos puntos
 
+    Punto P1, P2;
+    float m;
+
+    cout<<endl<<"Ingresa las coordenadas de P1"<<endl;
+    P1.pideleAlUsuarioTusDatos();
+    cout<<endl<<"Ingresa las coordenadas de P2"<<endl;
+    P2.pideleAlUsuarioTusDatos();
+
+    m = (P2.dameTuY()-P1.dameTuY()) / (P2.dameTuX()-P1.dameTuX());
+
+    cout<<endl<<"m = "<<m<<endl;
+
     return 0;
 }
