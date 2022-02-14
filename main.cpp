@@ -66,26 +66,34 @@ public:
 //cartesiano: C es el centro del circulo y P es un punto
 //sobre su circunferencia
 int main(void){
-    Punto C, P;
-    float radio, area, perimetro;
+    Punto P, Q;
+    float base, altura, area, perimetro;
 
-    cout<<endl<<"Ingresa las coordenadas de C"<<endl;
-    C.pideleAlUsuarioTusDatos();
+    //1. Pide datos
     cout<<endl<<"Ingresa las coordenadas de P"<<endl;
     P.pideleAlUsuarioTusDatos();
+    cout<<endl<<"Ingresa las coordenadas de Q"<<endl;
+    Q.pideleAlUsuarioTusDatos();
 
-    radio = sqrt(
-                pow(P.dameTuX()-C.dameTuX(),2)
-                +
-                pow(P.dameTuY()-C.dameTuY(),2)
-            );
-    area = M_PI * pow(radio,2);
-    perimetro = 2*M_PI*radio;
+    if(P.dameTuX() != Q.dameTuX()
+       &&
+       Q.dameTuY() != Q.dameTuY()
+    ){
+        //2. Calcula formula(s)
+        base = fabs(Q.dameTuX()-P.dameTuX());
+        altura = fabs(Q.dameTuY()-P.dameTuY());
+        area = base*altura;
+        perimetro = 2*base + 2*altura;
 
-    cout<<endl
-        <<"Area = "<<area<<endl
-        <<"Radio = "<<radio<<endl
-        <<"Perimetro = "<<perimetro<<endl;
+        //3. Muestra resultado(s)
+        cout<<endl
+            <<"Base = "<<base<<endl
+            <<"Altura = "<<altura<<endl
+            <<"Area = "<<area<<endl
+            <<"Perimetro = "<<perimetro<<endl;
+    }
+    else
+        cout<<endl<<"Error! Datos ingresados son de una recta..."<<endl;
 
     return 0;
 }
