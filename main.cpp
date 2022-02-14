@@ -61,28 +61,31 @@ public:
     };
 };
 
+//Codifica un programa que calcule el area y el perimetro
+//de un circulo representado por dos puntos en un plano
+//cartesiano: C es el centro del circulo y P es un punto
+//sobre su circunferencia
 int main(void){
-    //Codifica un programa que calcule la distancia entre
-    //dos puntos en un plano cartesiano
+    Punto C, P;
+    float radio, area, perimetro;
 
-    Punto P, Q;
-    float d;
-
-    //1. Pide datos
+    cout<<endl<<"Ingresa las coordenadas de C"<<endl;
+    C.pideleAlUsuarioTusDatos();
     cout<<endl<<"Ingresa las coordenadas de P"<<endl;
     P.pideleAlUsuarioTusDatos();
-    cout<<endl<<"Ingresa las coordenadas de Q"<<endl;
-    Q.pideleAlUsuarioTusDatos();
 
-    //2. Calcula formula(s)
-    d = sqrt(
-            pow(P.dameTuX()-Q.dameTuX(), 2)
-            +
-            pow(P.dameTuY()-Q.dameTuY() ,2)
-        );
+    radio = sqrt(
+                pow(P.dameTuX()-C.dameTuX(),2)
+                +
+                pow(P.dameTuY()-C.dameTuY(),2)
+            );
+    area = M_PI * pow(radio,2);
+    perimetro = 2*M_PI*radio;
 
-    //3. Muestra resultado(s)
-    cout<<endl<<"d = "<<d<<endl;
+    cout<<endl
+        <<"Area = "<<area<<endl
+        <<"Radio = "<<radio<<endl
+        <<"Perimetro = "<<perimetro<<endl;
 
     return 0;
 }
