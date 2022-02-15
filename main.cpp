@@ -61,39 +61,53 @@ public:
     };
 };
 
-//Codifica un programa que calcule el area y el perimetro
-//de un circulo representado por dos puntos en un plano
-//cartesiano: C es el centro del circulo y P es un punto
-//sobre su circunferencia
+//Codifica un programa que calcule si un punto en un plano cartesiano
+//se encuentra en uno de los cuadrantes, sobre uno de los ejes
+//o en el origen
 int main(void){
-    Punto P, Q;
-    float base, altura, area, perimetro;
+    Punto P;
 
     //1. Pide datos
     cout<<endl<<"Ingresa las coordenadas de P"<<endl;
     P.pideleAlUsuarioTusDatos();
-    cout<<endl<<"Ingresa las coordenadas de Q"<<endl;
-    Q.pideleAlUsuarioTusDatos();
 
-    if(P.dameTuX() != Q.dameTuX()
-       &&
-       P.dameTuY() != Q.dameTuY()
-    ){
-        //2. Calcula formula(s)
-        base = fabs(Q.dameTuX()-P.dameTuX());
-        altura = fabs(Q.dameTuY()-P.dameTuY());
-        area = base*altura;
-        perimetro = 2*base + 2*altura;
-
-        //3. Muestra resultado(s)
-        cout<<endl
-            <<"Base = "<<base<<endl
-            <<"Altura = "<<altura<<endl
-            <<"Area = "<<area<<endl
-            <<"Perimetro = "<<perimetro<<endl;
+    //2. Calcula formula(s)
+    if(P.dameTuX()>0 && P.dameTuY()>0){
+        P.muestraTusDatos();
+        cout<<" esta en el cuadrante I"<<endl;
     }
-    else
-        cout<<endl<<"Error! Datos ingresados son de una recta..."<<endl;
+    else if(P.dameTuX()<0 && P.dameTuY()>0){
+        P.muestraTusDatos();
+        cout<<" esta en el cuadrante II"<<endl;
+    }
+    else if(P.dameTuX()<0 && P.dameTuY()<0){
+        P.muestraTusDatos();
+        cout<<" esta en el cuadrante III"<<endl;
+    }
+    else if(P.dameTuX()>0 && P.dameTuY()<0){
+        P.muestraTusDatos();
+        cout<<" esta en el cuadrante IV"<<endl;
+    }
+    else if(P.dameTuX()>0 && P.dameTuY()==0){
+        P.muestraTusDatos();
+        cout<<" esta en el eje X+"<<endl;
+    }
+    else if(P.dameTuX()==0 && P.dameTuY()>0){
+        P.muestraTusDatos();
+        cout<<" esta en el eje Y+"<<endl;
+    }
+    else if(P.dameTuX()<0 && P.dameTuY()==0){
+        P.muestraTusDatos();
+        cout<<" esta en el eje X-"<<endl;
+    }
+    else if(P.dameTuX()==0 && P.dameTuY()<0){
+        P.muestraTusDatos();
+        cout<<" esta en el eje Y-"<<endl;
+    }
+    else{
+        P.muestraTusDatos();
+        cout<<" esta en el o"<<endl;
+    }
 
     return 0;
 }
