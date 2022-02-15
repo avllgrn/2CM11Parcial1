@@ -61,53 +61,34 @@ public:
     };
 };
 
-//Codifica un programa que calcule si un punto en un plano cartesiano
-//se encuentra en uno de los cuadrantes, sobre uno de los ejes
-//o en el origen
+Punto suma(Punto P, Punto Q);
+
 int main(void){
-    Punto P;
+    //Codifica un programa que sume dos puntos en un plano cartesiano
 
-    //1. Pide datos
-    cout<<endl<<"Ingresa las coordenadas de P"<<endl;
-    P.pideleAlUsuarioTusDatos();
+    Punto A, B, C;
 
-    //2. Calcula formula(s)
-    if(P.dameTuX()>0 && P.dameTuY()>0){
-        P.muestraTusDatos();
-        cout<<" esta en el cuadrante I"<<endl;
-    }
-    else if(P.dameTuX()<0 && P.dameTuY()>0){
-        P.muestraTusDatos();
-        cout<<" esta en el cuadrante II"<<endl;
-    }
-    else if(P.dameTuX()<0 && P.dameTuY()<0){
-        P.muestraTusDatos();
-        cout<<" esta en el cuadrante III"<<endl;
-    }
-    else if(P.dameTuX()>0 && P.dameTuY()<0){
-        P.muestraTusDatos();
-        cout<<" esta en el cuadrante IV"<<endl;
-    }
-    else if(P.dameTuX()>0 && P.dameTuY()==0){
-        P.muestraTusDatos();
-        cout<<" esta en el eje X+"<<endl;
-    }
-    else if(P.dameTuX()==0 && P.dameTuY()>0){
-        P.muestraTusDatos();
-        cout<<" esta en el eje Y+"<<endl;
-    }
-    else if(P.dameTuX()<0 && P.dameTuY()==0){
-        P.muestraTusDatos();
-        cout<<" esta en el eje X-"<<endl;
-    }
-    else if(P.dameTuX()==0 && P.dameTuY()<0){
-        P.muestraTusDatos();
-        cout<<" esta en el eje Y-"<<endl;
-    }
-    else{
-        P.muestraTusDatos();
-        cout<<" esta en el o"<<endl;
-    }
+    cout<<endl<<"Dame las coordenadas de A "<<endl;
+    A.pideleAlUsuarioTusDatos();
+
+    cout<<endl<<"Dame las coordenadas de B "<<endl;
+    B.pideleAlUsuarioTusDatos();
+
+    C = suma(A,B);
+
+    cout<<endl<<"  A";
+    A.muestraTusDatos();
+    cout<<endl<<"+ B";
+    B.muestraTusDatos();
+    cout<<endl<<"= C";
+    C.muestraTusDatos();
 
     return 0;
+}
+
+Punto suma(Punto P, Punto Q){
+    Punto R;
+    R.modificaTuX(P.dameTuX()+Q.dameTuX());
+    R.modificaTuY(P.dameTuY()+Q.dameTuY());
+    return R;
 }
