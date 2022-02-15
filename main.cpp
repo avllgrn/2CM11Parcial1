@@ -77,7 +77,7 @@ int main(void){
 
     if(P.dameTuX() != Q.dameTuX()
        &&
-       Q.dameTuY() != Q.dameTuY()
+       P.dameTuY() != Q.dameTuY()
     ){
         //2. Calcula formula(s)
         base = fabs(Q.dameTuX()-P.dameTuX());
