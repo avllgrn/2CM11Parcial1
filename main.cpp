@@ -68,6 +68,11 @@ public:
     };
 };
 
+Complejo suma(Complejo A, Complejo B);
+Complejo resta(Complejo A, Complejo B);
+Complejo multiplica(Complejo A, Complejo B);
+Complejo divide(Complejo A, Complejo B);
+
 int main(void){
     Complejo C1, C2, C3, C4, C5, C6;
 
@@ -76,37 +81,10 @@ int main(void){
     cout<<endl<<"Ingresa C1"<<endl;
     C2.pideleAlUsuarioTusDatos();
 
-    C3.modificaTuReal(
-		C1.dameTuReal() + C2.dameTuReal()
-	);
-    C3.modificaTuImaginario(
-		C1.dameTuImaginario() + C2.dameTuImaginario()
-	);
-
-    C4.modificaTuReal(
-		C1.dameTuReal() - C2.dameTuReal()
-	);
-    C4.modificaTuImaginario(
-		C1.dameTuImaginario() - C2.dameTuImaginario()
-	);
-
-    C5.modificaTuReal(
-		C1.dameTuReal()*C2.dameTuReal() - C1.dameTuImaginario()*C2.dameTuImaginario()
-	);
-    C5.modificaTuImaginario(
-		C1.dameTuReal()*C2.dameTuImaginario() + C2.dameTuReal()*C1.dameTuImaginario()
-	);
-
-    C6.modificaTuReal(
-        (C1.dameTuReal()*C2.dameTuReal() + C1.dameTuImaginario()*C2.dameTuImaginario())
-        /
-        (pow(C2.dameTuReal(),2) + pow(C2.dameTuImaginario(),2))
-    );
-    C6.modificaTuImaginario(
-        (C2.dameTuReal()*C1.dameTuImaginario() - C1.dameTuReal()*C2.dameTuImaginario())
-        /
-        (pow(C2.dameTuReal(),2) + pow(C2.dameTuImaginario(),2))
-    );
+    C3 = suma(C1,C2);
+    C4 = resta(C1,C2);
+    C5 = multiplica(C1,C2);
+    C6 = divide(C1,C2);
 
     cout<<endl<<"( ";
     C1.muestraTusDatos();
@@ -137,4 +115,61 @@ int main(void){
     C6.muestraTusDatos();
 
     return 0;
+}
+
+Complejo suma(Complejo A, Complejo B){
+    Complejo R;
+    R.modificaTuReal(
+        A.dameTuReal()
+        +
+        B.dameTuReal()
+    );
+    R.modificaTuImaginario(
+        A.dameTuImaginario()
+        +
+        B.dameTuImaginario()
+    );
+    return R;
+}
+Complejo resta(Complejo A, Complejo B){
+    Complejo R;
+    R.modificaTuReal(
+        A.dameTuReal()
+        -
+        B.dameTuReal()
+    );
+    R.modificaTuImaginario(
+        A.dameTuImaginario()
+        -
+        B.dameTuImaginario()
+    );
+    return R;
+}
+Complejo multiplica(Complejo A, Complejo B){
+    Complejo R;
+    R.modificaTuReal(
+        A.dameTuReal()*B.dameTuReal()
+        -
+        A.dameTuImaginario()*B.dameTuImaginario()
+    );
+    R.modificaTuImaginario(
+        A.dameTuReal()*B.dameTuImaginario()
+        +
+        B.dameTuReal()*A.dameTuImaginario()
+    );
+    return R;
+}
+Complejo divide(Complejo A, Complejo B){
+    Complejo R;
+    R.modificaTuReal(
+        (A.dameTuReal()*B.dameTuReal()+A.dameTuImaginario()*B.dameTuImaginario())
+        /
+        (pow(B.dameTuReal(),2)+pow(B.dameTuImaginario(),2))
+    );
+    R.modificaTuImaginario(
+        (B.dameTuReal()*A.dameTuImaginario()-A.dameTuReal()*B.dameTuImaginario())
+        /
+        (pow(B.dameTuReal(),2)+pow(B.dameTuImaginario(),2))
+    );
+    return R;
 }
