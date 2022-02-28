@@ -16,44 +16,28 @@ int main(void){
     //Cuantas letras tiene
     //Cuantos caracteres especiales tiene
     string Cadena;
-    int i,n,numeros,minusculas,mayusculas,letras,especiales;
+    int i,numeros,minusculas,mayusculas,especiales;
     cout<<"Ingresa cadena ";
     getline(cin,Cadena);
-    n = Cadena.size();
 
     numeros=0;
-    for(i=0; i<n; i++){
+    minusculas=0;
+    mayusculas=0;
+    especiales=0;
+    for(i=0; i<Cadena.size(); i++){
         if(esNumero(Cadena.at(i)))
             numeros++;
-    }
-    cout<<Cadena<<" tiene "<<numeros<<" numeros."<<endl;
-
-    minusculas=0;
-    for(i=0; i<n; i++){
-        if(esMinuscula(Cadena.at(i)))
+        else if(esMinuscula(Cadena.at(i)))
             minusculas++;
-    }
-    cout<<Cadena<<" tiene "<<minusculas<<" minusculas."<<endl;
-
-    mayusculas=0;
-    for(i=0; i<n; i++){
-        if(esMayuscula(Cadena.at(i)))
+        else if(esMayuscula(Cadena.at(i)))
             mayusculas++;
-    }
-    cout<<Cadena<<" tiene "<<mayusculas<<" mayusculas."<<endl;
-
-    letras=0;
-    for(i=0; i<n; i++){
-        if(esLetra(Cadena.at(i)))
-            letras++;
-    }
-    cout<<Cadena<<" tiene "<<letras<<" letras."<<endl;
-
-    especiales=0;
-    for(i=0; i<n; i++){
-        if(esCaracterEspecial(Cadena.at(i)))
+        else
             especiales++;
     }
+    cout<<Cadena<<" tiene "<<numeros<<" numeros."<<endl;
+    cout<<Cadena<<" tiene "<<minusculas<<" minusculas."<<endl;
+    cout<<Cadena<<" tiene "<<mayusculas<<" mayusculas."<<endl;
+    cout<<Cadena<<" tiene "<<minusculas+mayusculas<<" letras."<<endl;
     cout<<Cadena<<" tiene "<<especiales<<" caracteres especiales."<<endl;
 
     return 0;
