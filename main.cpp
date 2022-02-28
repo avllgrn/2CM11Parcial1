@@ -9,12 +9,52 @@ bool esLetra(char c);
 bool esCaracterEspecial(char c);
 
 int main(void){
+    //Codifica un programa que lea una cadena string y diga
+    //Cuantos numeros tiene
+    //Cuantas minusculas tiene
+    //Cuantas mayusculas tiene
+    //Cuantas letras tiene
+    //Cuantos caracteres especiales tiene
+    string Cadena;
+    int i,n,numeros,minusculas,mayusculas,letras,especiales;
+    cout<<"Ingresa cadena ";
+    getline(cin,Cadena);
+    n = Cadena.size();
 
-    cout << esNumero('E') << endl;
-    cout << esMayuscula('E') << endl;
-    cout << esMinuscula('E') << endl;
-    cout << esLetra('E') << endl;
-    cout << esCaracterEspecial('E') << endl;
+    numeros=0;
+    for(i=0; i<n; i++){
+        if(esNumero(Cadena.at(i)))
+            numeros++;
+    }
+    cout<<Cadena<<" tiene "<<numeros<<" numeros."<<endl;
+
+    minusculas=0;
+    for(i=0; i<n; i++){
+        if(esMinuscula(Cadena.at(i)))
+            minusculas++;
+    }
+    cout<<Cadena<<" tiene "<<minusculas<<" minusculas."<<endl;
+
+    mayusculas=0;
+    for(i=0; i<n; i++){
+        if(esMayuscula(Cadena.at(i)))
+            mayusculas++;
+    }
+    cout<<Cadena<<" tiene "<<mayusculas<<" mayusculas."<<endl;
+
+    letras=0;
+    for(i=0; i<n; i++){
+        if(esLetra(Cadena.at(i)))
+            letras++;
+    }
+    cout<<Cadena<<" tiene "<<letras<<" letras."<<endl;
+
+    especiales=0;
+    for(i=0; i<n; i++){
+        if(esCaracterEspecial(Cadena.at(i)))
+            especiales++;
+    }
+    cout<<Cadena<<" tiene "<<especiales<<" caracteres especiales."<<endl;
 
     return 0;
 }
