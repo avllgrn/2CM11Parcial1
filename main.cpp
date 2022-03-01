@@ -2,10 +2,9 @@
 #include <stdlib.h>
 using namespace std;
 
-int main(void){
-    //Tarea1: Codifica un programa que lea una cadena
-    //y la copie en otra, de manera invertida.
+bool sonIdenticas(string cad1, string cad2);
 
+int main(void){
     string Destino, Origen;
     int i,n;
 
@@ -20,5 +19,24 @@ int main(void){
     cout<<"Origen:  "<<Origen<<endl;
     cout<<"Destino: "<<Destino<<endl<<endl;
 
+    if(sonIdenticas(Origen,Destino))
+        cout<<Origen<<" es palindrome"<<endl<<endl;
+    else
+        cout<<Origen<<" NO es palindrome"<<endl<<endl;
+
+    if(Origen.compare(Destino)==0)
+        cout<<Origen<<" es palindrome"<<endl<<endl;
+    else
+        cout<<Origen<<" NO es palindrome"<<endl<<endl;
+
     return 0;
+}
+
+bool sonIdenticas(string cad1, string cad2){
+    int i, n;
+    for(i=0; i<cad1.size(); i++)
+        if(cad1.at(i) != cad2.at(i))
+            return false;
+
+    return true;
 }
