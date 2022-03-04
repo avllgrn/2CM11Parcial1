@@ -25,5 +25,16 @@ int main(void){
         <<"Tu dominio es : "<<dominio<<endl
         <<endl;
 
+    //Ejercicio 2:
+    //Despues de solucionar el Ejercicio 1,
+    //a) sustitye el nombre del servidor por ipn
+    //b) sustitye el nombre del dominio por mx
+
+    email.replace(email.find('@')+1, email.find('.')-email.find('@')-1, "ipn");
+    email.replace(email.find('.')+1, email.size()-email.find('.')-1, "mx");
+
+    cout<<endl
+        <<"Tu email es: "<<email<<endl<<endl;
+
     return 0;
 }
