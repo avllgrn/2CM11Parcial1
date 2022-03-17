@@ -1,70 +1,98 @@
 #include <iostream>
-#include <math.h>
+#include <stdlib.h>
+#include <sstream>
 #include <fstream>
 using namespace std;
 
-class Complejo{
+class Natural{
 private:
-    double real;
-    double imaginario;
+    int iValor;
+    string sValor;
+    void verificaSValor(void){
+        stringstream ss;
+        this->iValor = abs(atoi(this->sValor.c_str()));
+        ss << this->iValor;
+        ss >> this->sValor;
+    };
 public:
-    Complejo(void){
-        this->real = 0.0;
-        this->imaginario = 0.0;
+    Natural(void){
+        this->iValor = 0;
+        this->sValor = "0";
         //cout << "Objeto construido, this -> " << this << endl;
     };
-    Complejo(double real, double imaginario){
-        this->real = real;
-        this->imaginario = imaginario;
+    Natural(int iValor){
+        stringstream ss;
+        this->iValor = abs(iValor);
+        ss << this->iValor;
+        ss >> this->sValor;
         //cout << "Objeto construido, this -> " << this << endl;
     };
-    ~Complejo(void){
+    Natural(string sValor){
+        this->sValor = sValor;
+        this->verificaSValor();
+        //cout << "Objeto construido, this -> " << this << endl;
+    };
+    Natural(char cValor){
+        stringstream ss;
+        if(cValor<48||cValor>57){
+            iValor = (int) cValor;
+            ss << this->iValor;
+            ss >> this->sValor;
+        }
+        else{
+            ss << cValor;
+            ss >> this->sValor;
+            iValor = atoi(sValor.c_str());
+        }
+        //cout << "Objeto construido, this -> " << this << endl;
+    };
+    ~Natural(void){
         //cout << "Objeto destruido, this -> " << this << endl;
     };
     void pideleAlUsuarioTusDatos(void){
-        cout<<"Dame mi real ";
-        cin>>this->real;
-        cout<<"Dame mi imaginario ";
-        cin>>this->imaginario;
+        cout<<"Dame mi iValor ";
+        cin>>this->sValor;
+        this->verificaSValor();
     };
     void muestraTusDatos(void){
-        cout << this->real;
-        if(this->imaginario<0)
-            cout << this->imaginario;
-        else
-            cout << "+" << this->imaginario;
-		cout << "i";
+        cout << this->iValor;
     };
     void guardaTusDatos(ofstream& ASalida) {
-        ASalida << this->real;
-        if(this->imaginario<0)
-            ASalida << this->imaginario;
-        else
-            ASalida << "+" << this->imaginario;
-		ASalida << "i";
+        ASalida << this->iValor;
     };
     void cargaTusDatos(ifstream& AEntrada) {
-        char caracter;
-        AEntrada >> this->real;
-        AEntrada >> caracter;
-        AEntrada >> this->imaginario;
-        AEntrada >> caracter;
+        AEntrada >> sValor;
+        this->verificaSValor();
     };
-    double dameTuReal(void){
-        return this->real;
+    int dameTuIValor(void){
+        return this->iValor;
     };
-    void modificaTuReal(double real){
-        this->real = real;
+    void modificaTuIValor(int iValor){
+        stringstream ss;
+        this->iValor = abs(iValor);
+        ss << this->iValor;
+        ss >> this->sValor;
     };
-    double dameTuImaginario(void){
-        return this->imaginario;
+    void modificaTuIValor(char cValor){
+        stringstream ss;
+        if(cValor<48||cValor>57){
+            iValor = (int) cValor;
+            ss << this->iValor;
+            ss >> this->sValor;
+        }
+        else{
+            ss << cValor;
+            ss >> this->sValor;
+            iValor = atoi(sValor.c_str());
+        }
+        //cout << "Objeto construido, this -> " << this << endl;
     };
-    void modificaTuImaginario(double imaginario){
-        this->imaginario = imaginario;
-    };
-    void modificaTusDatos(double real, double imaginario){
-        this->real = real;
-        this->imaginario = imaginario;
+    string dameTuSValor(void){
+        return this->sValor;
+    }
+    void modificaTuSValor(string sValor){
+        this->sValor = sValor;
+        this->verificaSValor();
     };
 };
 
@@ -72,8 +100,8 @@ public:
 
 int main(void){
 
-    Complejo a;      //Instancia de la clase punto
-    Complejo*ptr;    //Apuntador que guarda una direccion
+    Natural a;      //Instancia de la clase punto
+    Natural*ptr;    //Apuntador que guarda una direccion
 
     ptr = &a;
 
