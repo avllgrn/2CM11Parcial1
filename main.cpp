@@ -3,61 +3,68 @@
 #include <fstream>
 using namespace std;
 
-class Punto{
+class Complejo{
 private:
-    double x;
-    double y;
+    double real;
+    double imaginario;
 public:
-    Punto(void){
-        this->x = 0.0;
-        this->y = 0.0;
+    Complejo(void){
+        this->real = 0.0;
+        this->imaginario = 0.0;
         //cout << "Objeto construido, this -> " << this << endl;
     };
-    Punto(double x, double y){
-        this->x = x;
-        this->y = y;
+    Complejo(double real, double imaginario){
+        this->real = real;
+        this->imaginario = imaginario;
         //cout << "Objeto construido, this -> " << this << endl;
     };
-    ~Punto(void){
+    ~Complejo(void){
         //cout << "Objeto destruido, this -> " << this << endl;
     };
     void pideleAlUsuarioTusDatos(void){
-        cout<<"Dame mi x ";
-        cin>>this->x;
-        cout<<"Dame mi y ";
-        cin>>this->y;
+        cout<<"Dame mi real ";
+        cin>>this->real;
+        cout<<"Dame mi imaginario ";
+        cin>>this->imaginario;
     };
     void muestraTusDatos(void){
-        cout << "(" << this->x << ", " << this->y <<")";
+        cout << this->real;
+        if(this->imaginario<0)
+            cout << this->imaginario;
+        else
+            cout << "+" << this->imaginario;
+		cout << "i";
     };
     void guardaTusDatos(ofstream& ASalida) {
-        ASalida << "(" << this->x
-				<< ", " << this->y
-				<< ")" << endl;
+        ASalida << this->real;
+        if(this->imaginario<0)
+            ASalida << this->imaginario;
+        else
+            ASalida << "+" << this->imaginario;
+		ASalida << "i";
     };
     void cargaTusDatos(ifstream& AEntrada) {
         char caracter;
+        AEntrada >> this->real;
         AEntrada >> caracter;
-        AEntrada >> this->x;
-        AEntrada >> caracter;
-        AEntrada >> this->y;
+        AEntrada >> this->imaginario;
         AEntrada >> caracter;
     };
-    double dameTuX(void){
-        return this->x;
+    double dameTuReal(void){
+        return this->real;
     };
-    void modificaTuX(double x){
-        this->x = x;
+    void modificaTuReal(double real){
+        this->real = real;
     };
-    double dameTuY(void){
-        return this->y;
+    double dameTuImaginario(void){
+        return this->imaginario;
     };
-    void modificaTuY(double y){
-        this->y = y;
+    void modificaTuImaginario(double imaginario){
+        this->imaginario = imaginario;
     };
-    void modificaTusDatos(double x, double y){
-        this->x = x;
-        this->y = y;
+    void modificaTusDatos(double real, double imaginario){
+        this->real = real;
+        this->imaginario = imaginario;
     };
 };
 
@@ -65,8 +72,8 @@ public:
 
 int main(void){
 
-    Punto a;      //Instancia de la clase punto
-    Punto*ptr;    //Apuntador que guarda una direccion
+    Complejo a;      //Instancia de la clase punto
+    Complejo*ptr;    //Apuntador que guarda una direccion
 
     ptr = &a;
 
