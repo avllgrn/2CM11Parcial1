@@ -1,121 +1,90 @@
 #include <iostream>
-#include <stdlib.h>
-#include <sstream>
+#include <math.h>
 #include <fstream>
 using namespace std;
 
-class Natural{
+class Punto{
 private:
-    int iValor;
-    string sValor;
-    void verificaSValor(void){
-        stringstream ss;
-        this->iValor = abs(atoi(this->sValor.c_str()));
-        ss << this->iValor;
-        ss >> this->sValor;
-    };
+    double x;
+    double y;
 public:
-    Natural(void){
-        this->iValor = 0;
-        this->sValor = "0";
+    Punto(void){
+        this->x = 0.0;
+        this->y = 0.0;
         //cout << "Objeto construido, this -> " << this << endl;
     };
-    Natural(int iValor){
-        stringstream ss;
-        this->iValor = abs(iValor);
-        ss << this->iValor;
-        ss >> this->sValor;
+    Punto(double x, double y){
+        this->x = x;
+        this->y = y;
         //cout << "Objeto construido, this -> " << this << endl;
     };
-    Natural(string sValor){
-        this->sValor = sValor;
-        this->verificaSValor();
-        //cout << "Objeto construido, this -> " << this << endl;
-    };
-    Natural(char cValor){
-        stringstream ss;
-        if(cValor<48||cValor>57){
-            iValor = (int) cValor;
-            ss << this->iValor;
-            ss >> this->sValor;
-        }
-        else{
-            ss << cValor;
-            ss >> this->sValor;
-            iValor = atoi(sValor.c_str());
-        }
-        //cout << "Objeto construido, this -> " << this << endl;
-    };
-    ~Natural(void){
+    ~Punto(void){
         //cout << "Objeto destruido, this -> " << this << endl;
     };
     void pideleAlUsuarioTusDatos(void){
-        cout<<"Dame mi iValor ";
-        cin>>this->sValor;
-        this->verificaSValor();
+        cout<<"Dame mi x ";
+        cin>>this->x;
+        cout<<"Dame mi y ";
+        cin>>this->y;
     };
     void muestraTusDatos(void){
-        cout << this->iValor;
+        cout << "(" << this->x << ", " << this->y <<")";
     };
     void guardaTusDatos(ofstream& ASalida) {
-        ASalida << this->iValor;
+        ASalida << "(" << this->x
+				<< ", " << this->y
+				<< ")" << endl;
     };
     void cargaTusDatos(ifstream& AEntrada) {
-        AEntrada >> sValor;
-        this->verificaSValor();
+        char caracter;
+        AEntrada >> caracter;
+        AEntrada >> this->x;
+        AEntrada >> caracter;
+        AEntrada >> this->y;
+        AEntrada >> caracter;
     };
-    int dameTuIValor(void){
-        return this->iValor;
+    double dameTuX(void){
+        return this->x;
     };
-    void modificaTuIValor(int iValor){
-        stringstream ss;
-        this->iValor = abs(iValor);
-        ss << this->iValor;
-        ss >> this->sValor;
+    void modificaTuX(double x){
+        this->x = x;
     };
-    void modificaTuIValor(char cValor){
-        stringstream ss;
-        if(cValor<48||cValor>57){
-            iValor = (int) cValor;
-            ss << this->iValor;
-            ss >> this->sValor;
-        }
-        else{
-            ss << cValor;
-            ss >> this->sValor;
-            iValor = atoi(sValor.c_str());
-        }
-        //cout << "Objeto construido, this -> " << this << endl;
+    double dameTuY(void){
+        return this->y;
     };
-    string dameTuSValor(void){
-        return this->sValor;
-    }
-    void modificaTuSValor(string sValor){
-        this->sValor = sValor;
-        this->verificaSValor();
+    void modificaTuY(double y){
+        this->y = y;
+    };
+    void modificaTusDatos(double x, double y){
+        this->x = x;
+        this->y = y;
     };
 };
-
-//  Direccion   !=  Dato
-
 int main(void){
+    //Codifica un programa que sume dos puntos en un plano cartesiano
 
-    Natural a;      //Instancia de la clase punto
-    Natural*ptr;    //Apuntador que guarda una direccion
+    Punto A, B, C;
+    Punto *APtr, *BPtr, *CPtr;
 
-    ptr = &a;
+    APtr=&A;
+    BPtr=&B;
+    CPtr=&C;
 
+    cout<<endl<<"Ingresa las coordenadas de A"<<endl;
+    APtr->pideleAlUsuarioTusDatos();
 
-    a.muestraTusDatos(); cout<< endl;       //Contenido de a
-    cout << &a << endl;                     //Direccion de a
-    cout << ptr << endl;                    //Contenido de ptr
-    cout << &ptr << endl;                   //Direccion de ptr
+    cout<<endl<<"Ingresa las coordenadas de B"<<endl;
+    BPtr->pideleAlUsuarioTusDatos();
 
-    (*ptr).muestraTusDatos(); cout<< endl;  //Contenido de la direccion contenida en ptr
-                                            //ptr, ve a la direccion que contienes y usa el objeto de ahí
+    CPtr->modificaTuX( APtr->dameTuX() + BPtr->dameTuX() );
+    CPtr->modificaTuY( APtr->dameTuY() + BPtr->dameTuY() );
 
-    ptr->muestraTusDatos(); cout<< endl;    //Contenido de la direccion contenida en ptr
-                                            //ptr, ve a la direccion que contienes y usa el objeto de ahí
+    cout<<endl<<"  A";
+    APtr->muestraTusDatos();
+    cout<<endl<<"+ B";
+    BPtr->muestraTusDatos();
+    cout<<endl<<"= C";
+    CPtr->muestraTusDatos();
 
     return 0;
 }
